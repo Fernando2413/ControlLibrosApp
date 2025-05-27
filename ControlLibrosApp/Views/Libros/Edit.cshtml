@@ -1,0 +1,44 @@
+﻿@model Entidad.Libro;
+@using System.Data;
+
+@{
+    ViewData["Title"] = "Editar Libro";
+}
+
+<h1>Editar Libro</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <input type="hidden" asp-for="IdLibro" />
+            <div class="form-group">
+                <label asp-for="TituloLibro" class="control-label">Titulo de Libro:</label>
+                <input asp-for="TituloLibro" class="form-control" value="@Model.TituloLibro" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Descripcion" class="control-label">Descripción:</label>
+                <input asp-for="Descripcion" class="form-control" value="@Model.Descripcion" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Autor" class="control-label">Autor:</label>
+                <input asp-for="Autor" class="form-control" value="@Model.Autor" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Genero" class="control-label">Genero Literario:</label>
+                <input asp-for="Genero" class="form-control" value="@Model.Genero" />
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaPublicacion" class="control-label">Fecha de Publicación:</label>
+                <input asp-for="FechaPublicacion" class="form-control" type="date" value="@DateOnly.FromDateTime(Convert.ToDateTime(Model.FechaPublicacion.ToString()))" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Guardar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Volver</a>
+</div>

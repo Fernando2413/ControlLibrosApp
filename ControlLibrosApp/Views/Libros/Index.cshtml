@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Entidad.Libro>;
+
+@{
+    ViewData["Title"] = "Lista de Libros";
+}
+
+<h1>Libros</h1>
+
+<p>
+    <a asp-action="Create">Agregar Libro</a>
+</p>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>
+                Titulo:
+            </th>
+            <th>
+                Descripción:
+            </th>
+            <th>
+                Autor:
+            </th>
+            <th>
+                Genero Literario:
+            </th>
+            <th>
+                Fecha de Publicación:
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @item.TituloLibro
+            </td>
+            <td>
+                @item.Descripcion
+            </td>
+            <td>
+                @item.Autor
+            </td>
+            <td>
+                @item.Genero
+            </td>
+            <td>
+                @item.FechaPublicacion
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdLibro">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.IdLibro">Detalles</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdLibro">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
